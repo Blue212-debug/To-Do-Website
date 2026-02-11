@@ -252,3 +252,47 @@ body {
   opacity: 0.6;
   text-decoration: line-through;
 }
+
+.centered-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.centered-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.centered-header p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-actions button {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(99,102,241,0.15);
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.task-actions button:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(99,102,241,0.4);
+}
+
+.task-actions button:active {
+  transform: scale(0.95);
+}
+
