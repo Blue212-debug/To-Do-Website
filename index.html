@@ -37,23 +37,43 @@
     <!-- Main -->
     <main class="main">
 
-      <!-- Centered Header -->
       <header class="header centered-header">
         <h1>My Tasks</h1>
         <p>Stay productive. Stay sharp.</p>
       </header>
 
-      <!-- Task Input -->
       <section class="task-input">
         <input type="text" id="taskInput" placeholder="What needs to be done?" />
         <button id="addTaskBtn">Add Task</button>
       </section>
 
-      <!-- Task List -->
       <section class="task-list" id="taskList"></section>
 
     </main>
 
+  </div>
+
+  <!-- Schedule Modal -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal">
+      <h2>Schedule Task</h2>
+      <p>Do you want to set a reminder?</p>
+
+      <div class="modal-options">
+        <button class="modal-btn" id="noScheduleBtn">
+          No Time (Normal Task)
+        </button>
+
+        <div class="time-picker">
+          <input type="datetime-local" id="taskDateTime">
+          <button class="modal-btn accent" id="confirmScheduleBtn">
+            Set Reminder
+          </button>
+        </div>
+      </div>
+
+      <button class="modal-close" id="closeModalBtn">Cancel</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
