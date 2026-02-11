@@ -1,11 +1,6 @@
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
-const focusInputBtn = document.getElementById("focusInputBtn");
 const taskList = document.getElementById("taskList");
-
-focusInputBtn.addEventListener("click", () => {
-  taskInput.focus();
-});
 
 addTaskBtn.addEventListener("click", addTask);
 
@@ -30,16 +25,32 @@ function addTask() {
         <p>New task added just now</p>
       </div>
     </div>
-    <span class="badge medium">Medium</span>
+
+    <div class="task-actions">
+      <button class="move-up">↑</button>
+      <button class="move-down">↓</button>
+    </div>
   `;
 
+  // Complete toggle
   const checkbox = taskCard.querySelector(".task-check");
-
   checkbox.addEventListener("change", function () {
-    if (this.checked) {
-      taskCard.classList.add("completed");
-    } else {
-      taskCard.classList.remove("completed");
+    taskCard.classList.toggle("completed", this.checked);
+  });
+
+  // Move Up
+  taskCard.querySelector(".move-up").addEventListener("click", function () {
+    const prev = taskCard.previousElementSibling;
+    if (prev) {
+      taskList.insertBefore(taskCard, prev);
+    }
+  });
+
+  // Move Down
+  taskCard.querySelector(".move-down").addEventListener("click", function () {
+    const next = taskCard.nextElementSibling;
+    if (next) {
+      taskList.insertBefore(next, taskCard);
     }
   });
 
