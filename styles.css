@@ -160,17 +160,24 @@ body {
   padding: 14px 22px;
   border-radius: var(--radius);
   border: none;
-  background: var(--success);
+  background: var(--accent);
   color: white;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
 }
 
 .task-input button:hover {
-  background: #34d399;
+  background: var(--accent-hover);
   transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(99,102,241,0.5);
 }
+
+.task-input button:active {
+  transform: scale(0.97);
+}
+
 
 /* Task List */
 
@@ -191,6 +198,28 @@ body {
   transition: 0.3s ease;
   border: 1px solid transparent;
 }
+
+.task-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
+  position: relative;
+  top: 2px; /* slight optical alignment adjustment */
+}
+  
+
+.remove-task {
+  background: rgba(239,68,68,0.15);
+  color: var(--danger);
+}
+
+.remove-task:hover {
+  background: var(--danger);
+  color: white;
+  box-shadow: 0 8px 15px rgba(239,68,68,0.4);
+}
+
 
 .task-card:hover {
   transform: translateY(-4px);
@@ -261,6 +290,7 @@ body {
 
 .task-actions {
   display: flex;
+  align-items: center; /* ensures vertical alignment */
   gap: 8px;
 }
 
