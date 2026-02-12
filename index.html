@@ -19,10 +19,10 @@
       </div>
 
       <nav class="nav">
-        <button class="nav-btn active">Dashboard</button>
-        <button class="nav-btn">Today</button>
-        <button class="nav-btn">Upcoming</button>
-        <button class="nav-btn">Completed</button>
+        <button class="nav-btn active" data-view="all">Dashboard</button>
+        <button class="nav-btn" data-view="today">Today</button>
+        <button class="nav-btn" data-view="upcoming">Upcoming</button>
+        <button class="nav-btn" data-view="completed">Completed</button>
       </nav>
 
       <div class="profile">
@@ -38,8 +38,8 @@
     <main class="main">
 
       <header class="header centered-header">
-        <h1>My Tasks</h1>
-        <p>Stay productive. Stay sharp.</p>
+        <h1 id="viewTitle">My Tasks</h1>
+        <p id="viewSubtitle">Stay productive. Stay sharp.</p>
       </header>
 
       <section class="task-input">
@@ -48,6 +48,14 @@
       </section>
 
       <section class="task-list" id="taskList"></section>
+
+      <div class="empty-state" id="emptyState">
+        <div class="empty-card">
+          <div class="empty-dot"></div>
+          <h3>No tasks here</h3>
+          <p>Add tasks or switch views.</p>
+        </div>
+      </div>
 
     </main>
 
@@ -60,19 +68,68 @@
       <p>Do you want to set a reminder?</p>
 
       <div class="modal-options">
-        <button class="modal-btn" id="noScheduleBtn">
-          No Time (Normal Task)
-        </button>
+        <button class="modal-btn" id="noScheduleBtn">No Time (Normal Task)</button>
 
-        <div class="time-picker">
-          <input type="datetime-local" id="taskDateTime">
-          <button class="modal-btn accent" id="confirmScheduleBtn">
-            Set Reminder
-          </button>
+        <div class="schedule-row">
+          <button class="modal-btn" id="chooseTimeBtn">Choose Date & Time</button>
+          <button class="modal-btn accent" id="confirmScheduleBtn" disabled>Done</button>
+        </div>
+
+        <div class="chosen-preview" id="chosenPreview">
+          <span class="preview-dot"></span>
+          <span class="preview-text" id="previewText">No date selected</span>
         </div>
       </div>
 
       <button class="modal-close" id="closeModalBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Date/Time Picker Popover -->
+  <div class="picker-overlay" id="pickerOverlay" aria-hidden="true">
+    <div class="picker">
+      <div class="picker-head">
+        <div class="picker-title">
+          <div class="picker-chip">Reminder</div>
+          <div class="picker-subtitle">Pick a date and time</div>
+        </div>
+
+        <button class="picker-x" id="pickerCloseBtn" type="button" aria-label="Close">✕</button>
+      </div>
+
+      <div class="picker-body">
+        <div class="cal">
+          <div class="cal-nav">
+            <button class="cal-btn" id="calPrevBtn" type="button">←</button>
+            <div class="cal-month" id="calMonthLabel">Month YYYY</div>
+            <button class="cal-btn" id="calNextBtn" type="button">→</button>
+          </div>
+
+          <div class="cal-dow">
+            <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+          </div>
+
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+
+        <div class="time">
+          <div class="time-label">Time</div>
+          <div class="time-select">
+            <button class="time-btn" id="timeBtn" type="button">
+              <span id="timeBtnText">Select time</span>
+              <span class="time-caret">▾</span>
+            </button>
+            <div class="time-menu" id="timeMenu"></div>
+          </div>
+
+          <div class="picker-summary">
+            <div class="sum-dot"></div>
+            <div class="sum-text" id="pickerSummaryText">Choose a date and time</div>
+          </div>
+
+          <button class="picker-done" id="pickerDoneBtn" type="button" disabled>Apply</button>
+        </div>
+      </div>
     </div>
   </div>
 
